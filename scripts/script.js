@@ -9,3 +9,11 @@ headerCityButton.addEventListener('click', () => {
   headerCityButton.textContent = city;
   localStorage.setItem('lomoda-location', city);
 });
+
+// модальное окно
+const subheaderCart = document.querySelector('.subheader__cart');
+const cartOverlay = document.querySelector('.cart-overlay');
+
+subheaderCart.addEventListener('click', () => {
+  cartOverlay.classList.add('cart-overlay-open');
+});

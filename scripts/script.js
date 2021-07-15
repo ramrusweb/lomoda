@@ -48,6 +48,27 @@ const cartModalClose = () => {
   enableScroll();
 };
 
+// database query
+const getData = async () => {
+  const data = await fetch('db.json');
+
+  if (data.ok) {
+    return data.json();
+  } else {
+    throw new Error(`Данные не были получены, ошибка ${data.status} ${data.statusText}`);
+  }
+};
+
+const getGoods = (callback) => {
+  getData()
+    .then(data => {
+      callback(data);
+    })
+    .catch(err => {
+      console.error(err);
+    });
+};
+
 subheaderCart.addEventListener('click', cartModalOpen);
 
 cartOverlay.addEventListener('click', event => {

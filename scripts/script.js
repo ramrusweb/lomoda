@@ -4,13 +4,23 @@ const headerCityButton = document.querySelector('.header__city-button');
 
 let hash = location.hash.substring(1);
 
-headerCityButton.textContent = localStorage.getItem('lomoda-location') || 'Ваш город?';
+// lomoda location
+const updateLocation = () => {
+  const lsLocation = localStorage.getItem('lomoda-location');
+  headerCityButton.textContent = 
+    lsLocation && lsLocation !== 'null' ?
+      lsLocation :
+        'Ваш город ?';
+};
 
 headerCityButton.addEventListener('click', () => {
   const city = prompt('Укажите Ваш город');
-  headerCityButton.textContent = city;
-  localStorage.setItem('lomoda-location', city);
+  if (city !== null) {
+    localStorage.setItem('lomoda-location', city);
+  }
+  updateLocation();
 });
+updateLocation();
 
 // scroll lock
 const disableScroll  = () => {
@@ -45,10 +55,20 @@ const cartModalOpen = () => {
   disableScroll();
 };
 
+subheaderCart.addEventListener('click', cartModalOpen);
+
 const cartModalClose = () => {
   cartOverlay.classList.remove('cart-overlay-open');
   enableScroll();
 };
+
+cartOverlay.addEventListener('click', event => {
+  const target = event.target;
+
+  if (target.matches('.cart__btn-close') || target.matches('.cart-overlay')) {
+    cartModalClose();
+  }
+});
 
 // database query
 const getData = async () => {
@@ -74,16 +94,6 @@ const getGoods = (callback, value) => {
       console.error(err);
     });
 };
-
-subheaderCart.addEventListener('click', cartModalOpen);
-
-cartOverlay.addEventListener('click', event => {
-  const target = event.target;
-
-  if (target.matches('.cart__btn-close') || target.matches('.cart-overlay')) {
-    cartModalClose();
-  }
-});
 
 // get goods
 try {
@@ -111,7 +121,6 @@ try {
               `<p class="good__sizes">Размеры (RUS): <span class="good__sizes-list">${sizes.join(' ')}</span></p>` :
               ''
             }
-    
             <a class="good__link" href="card-good.html#${id}">Подробнее</a>
         </div>
       </article>

@@ -3,6 +3,8 @@
 const headerCityButton = document.querySelector('.header__city-button');
 const cartListGoods = document.querySelector('.cart__list-goods');
 const cartTotalCost = document.querySelector('.cart__total-cost');
+const subheaderCart = document.querySelector('.subheader__cart');
+const cartOverlay = document.querySelector('.cart-overlay');
 
 let hash = location.hash.substring(1);
 
@@ -96,9 +98,6 @@ const enableScroll = () => {
 };
 
 // modal window
-const subheaderCart = document.querySelector('.subheader__cart');
-const cartOverlay = document.querySelector('.cart-overlay');
-
 const cartModalOpen = () => {
   cartOverlay.classList.add('cart-overlay-open');
   disableScroll();
@@ -252,13 +251,27 @@ try {
       cardGoodSizes.style.diplay = 'none';
     }
 
+    if (getLocalStorage().some(item => item.id === id)) {
+      cardGoodBuy.classList.add('delete');
+      cardGoodBuy.textContent = 'Удалить из корзины';
+    }
+
     cardGoodBuy.addEventListener('click', () => {
+      if (cardGoodBuy.classList.contains('delete')) {
+        deleteItemCart(id);
+        cardGoodBuy.classList.remove('delete');
+        cardGoodBuy.textContent = 'Добавить в корзину';
+        return;
+      }
       if (color) {
         data.color = cardGoodColor.textContent;
       }
       if (sizes) {
         data.size = cardGoodSizes.textContent;
       }
+
+      cardGoodBuy.classList.add('delete');
+      cardGoodBuy.textContent = 'Удалить из корзины';
 
       // update card
       const cardData = getLocalStorage();

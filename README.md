@@ -1,3 +1,2 @@
 # Online Store Lomoda
-
-![Main screen](https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png)
+![Lomoda main screen](https://github.com/ramrusweb/lomoda/blob/main/assets/lomoda_main_screen.png)

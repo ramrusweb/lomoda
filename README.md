@@ -1,2 +1,2 @@
 # Online Store Lomoda
-![Lomoda main screen](https://github.com/ramrusweb/lomoda/blob/main/assets/lomoda_main_screen.png)
+<div><img style="width: 50%" src="https://github.com/ramrusweb/lomoda/blob/main/assets/lomoda_main_screen.png" alt="Lomoda main screen"></div>

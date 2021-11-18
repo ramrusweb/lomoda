@@ -15,3 +15,7 @@
 
 ### Ordering
 <div><img src="https://github.com/ramrusweb/lomoda/blob/main/assets/ordering.png" alt="Ordering"></div>
+
+### Cart
+<div><img src="https://github.com/ramrusweb/lomoda/blob/main/assets/cart.png" alt="Cart"></div>
+<hr>

@@ -12,3 +12,6 @@
 ### Children
 <div><img src="https://github.com/ramrusweb/lomoda/blob/main/assets/children.png" alt="Category: Children"></div>
 <hr>
+
+### Ordering
+<div><img src="https://github.com/ramrusweb/lomoda/blob/main/assets/ordering.png" alt="Ordering"></div>
